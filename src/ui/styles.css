@@ -1,0 +1,126 @@
+/* StandUp — reminder overlay theme (embedded via include_str!, no runtime assets).
+ *
+ * Sizing uses pt/em on purpose: they follow the desktop text-scaling factor,
+ * so the layout stays correct on 1080p and 1440p / scale-2 displays.
+ * Class names are namespaced `su-*`. Reduced motion is honored in code
+ * (the `su-enter` class is only added when animations are enabled). */
+
+.su-root {
+  background-color: #0b1619;
+  background-image: linear-gradient(160deg, #12272c 0%, #0b1619 55%, #060d0f 100%);
+  font-family: 'Sora', 'Outfit', 'Manrope', 'Cantarell', 'DejaVu Sans', sans-serif;
+  font-size: 13pt;
+  color: #eef4f1;
+}
+
+.su-center {
+  padding: 3em;
+}
+
+/* Opening transition: quick fade with a small rise (~200ms, spec §3.1). */
+.su-enter {
+  animation: su-fade-rise 200ms ease-out;
+}
+
+@keyframes su-fade-rise {
+  from {
+    opacity: 0;
+    margin-top: 14px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+/* Movement glyph: pure-CSS ring, no image assets. */
+.su-glyph {
+  margin-bottom: 1.8em;
+}
+
+.su-glyph-ring {
+  min-width: 7.5em;
+  min-height: 7.5em;
+  border-radius: 9999px;
+  border: 2px solid rgba(143, 214, 148, 0.55);
+  background-color: rgba(143, 214, 148, 0.07);
+  box-shadow: 0 0 48px rgba(143, 214, 148, 0.16);
+  animation: su-breathe 2.6s ease-in-out infinite;
+}
+
+@keyframes su-breathe {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.su-glyph-arrow {
+  font-size: 3em;
+  font-weight: 800;
+  color: #8fd694;
+}
+
+.su-title {
+  font-size: 30pt;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: #f4f8f5;
+  margin-bottom: 0.35em;
+}
+
+.su-helper {
+  font-size: 12.5pt;
+  color: #a9bcb7;
+}
+
+.su-actions {
+  margin-top: 2.2em;
+}
+
+.su-btn {
+  font-size: 12.5pt;
+  font-weight: 700;
+  padding: 0.85em 2.4em;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
+}
+
+.su-primary {
+  background-color: #8fd694;
+  background-image: none;
+  color: #0b1a12;
+  box-shadow: 0 6px 28px rgba(143, 214, 148, 0.35);
+}
+
+.su-primary:hover {
+  background-color: #a5e3b0;
+  color: #0b1a12;
+}
+
+.su-primary:active {
+  background-color: #79c585;
+  color: #0b1a12;
+}
+
+.su-secondary {
+  background-color: transparent;
+  background-image: none;
+  color: #cfe0da;
+  border-color: rgba(207, 224, 218, 0.35);
+}
+
+.su-secondary:hover {
+  background-color: rgba(207, 224, 218, 0.1);
+  color: #ffffff;
+  border-color: rgba(207, 224, 218, 0.6);
+}
+
+/* Visible keyboard focus: Tab + Enter must be obvious (spec §3.1, AC-02). */
+.su-btn:focus {
+  outline: 2px solid #8fd694;
+  outline-offset: 3px;
+}

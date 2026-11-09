@@ -1,0 +1,31 @@
+[package]
+name = "standup"
+version = "1.0.0"
+edition = "2021"
+description = "StandUp — 25dk çalışma sonrası tam ekran hareket hatırlatıcısı (Linux/Wayland/Hyprland MVP)"
+license = "MIT"
+
+[[bin]]
+name = "standup"
+path = "src/main.rs"
+
+[dependencies]
+gtk4 = { version = "0.11", features = ["v4_12"] }
+gtk4-layer-shell = "0.8"
+glib = "0.22"
+gio = "0.22"
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+dirs = "6"
+notify-rust = "4"
+zbus = "5"
+futures-util = "0.3"
+anyhow = "1"
+log = "0.4"
+env_logger = "0.11"
+fs2 = "0.4"
+libc = "0.2"
+tokio = { version = "1", features = ["rt", "net", "time"] }
+
+[dev-dependencies]
+approx = "0.5"

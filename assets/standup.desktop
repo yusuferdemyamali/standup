@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=StandUp
+Comment=Full-screen movement reminder after 25 minutes at the computer
+Exec=standup
+TryExec=standup
+Terminal=false
+Categories=Utility;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true
+StartupNotify=false
